@@ -20,7 +20,7 @@ iptables -A INPUT -s SECURE_PRIVATE_IP2/32 -p tcp -m multiport --dports 22 -j AC
 iptables -A INPUT -s SECURE_PRIVATE_IP3/32 -p tcp -m multiport --dports 22 -j ACCEPT
 iptables -A INPUT -s SECURE_PRIVATE_IP4/32 -p tcp -m multiport --dports 22 -j ACCEPT
 iptables -A INPUT -s SECURE_PRIVATE_IP5/32 -p tcp -m multiport --dports 22 -j ACCEPT
-#BELOW ARE RULES TO CONTROL TRAFFIC ONLY FROM CLOUDFLARE
+# BELOW ARE RULES TO CONTROL TRAFFIC ONLY THROUGH CLOUDFLARE
 iptables -A INPUT -s 103.21.244.0/22 -p tcp -m multiport --dports 443 -j ACCEPT
 iptables -A INPUT -s 103.22.200.0/22 -p tcp -m multiport --dports 443 -j ACCEPT
 iptables -A INPUT -s 103.31.4.0/22 -p tcp -m multiport --dports 443 -j ACCEPT
@@ -39,7 +39,7 @@ iptables -A INPUT -s 198.41.128.0/17 -p tcp -m multiport --dports 443 -j ACCEPT
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
-#YOU MIGHT HAVE TO REMOVE IPv6 BELOW IF SYSTEM DO NOT HAVE MODULE
+# YOU MIGHT HAVE TO REMOVE IPv6 BELOW IF SYSTEM DO NOT HAVE MODULE
 ip6tables -t nat -F
 ip6tables -t mangle -F
 ip6tables -F
@@ -48,7 +48,7 @@ ip6tables -Z INPUT
 ip6tables -P INPUT DROP
 ip6tables -P FORWARD DROP
 ip6tables -P OUTPUT DROP
-#SET SYSTEM DATE TO EST
+# SET SYSTEM DATE TO EST
 timedatectl set-timezone America/Toronto
 dt=$(date '+%d/%m/%Y %H:%M:%S')
 echo $(date +"%D%T"),"$dt" > /root/fire.log
