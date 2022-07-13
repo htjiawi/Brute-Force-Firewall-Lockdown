@@ -51,5 +51,5 @@ ip6tables -P OUTPUT DROP
 #SET SYSTEM DATE TO EST
 timedatectl set-timezone America/Toronto
 dt=$(date '+%d/%m/%Y %H:%M:%S')
-echo "$dt" > /root/mylog.log
+echo $(date +"%D%T"),"$dt" > /root/fire.log
 
